@@ -10,6 +10,8 @@
 <body>
     <h1>met kovanca</h1>
     <div id="coin">Klikni gum za met</div>
+    <img src="" alt="" id="slika">
+    <input type="text" name="" id="vnos">
     <button onclick="btnClick()" type="button">FLIP</button>
 </body>
 
@@ -17,15 +19,24 @@
 <script>
     function btnClick() {
         var divCoin = document.getElementById("coin")
-        
+        var vnosInp=document.getElementById("vnos").value
+        var Slike = document.getElementById("slika")
+
+        console.log(vnosInp)
         $.ajax({
             url: "/coinData",
             data: {
-                zipcode: 97201
+                zipcode: 97201,
+                vrednost: vnosInp
+
             },
             success: function (result) {
                 console.log(result)
-                divCoin.innerHTML = result
+                divCoin.innerHTML = result.status
+                Slike.src = result.img
+
+
+                
             }
         });
 

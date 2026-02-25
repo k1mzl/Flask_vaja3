@@ -10,23 +10,26 @@
 <body>
     <h1>Prikaz Quota</h1>
     <div id="quote">Klikni gumb za quote</div>
-    <button onclick="btnClick()" type="button">FLIP</button>
+    <div id="author"></div>
+    <button onclick="btnClick()" type="button">DAJ MI INSPIRACION</button>
 </body>
 
 </html>
 
 <script>
     function btnClick() {
-        var Quote = document.getElementById("quote")
-
+        var divquote = document.getElementById("quote")
+        var author = document.getElementById("author")
         $.ajax({
             url: "/Quotedata",
             data: {
                 zipcode: 97201
+
             },
             success: function (result) {
                 console.log(result)
-                divCoin.innerHTML = result
+                divquote.innerHTML = result.quote
+                author.innerHTML = result.author
             }
         });
 
