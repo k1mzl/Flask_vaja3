@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template, 
+from flask import Flask,request,render_template
 #import requests
 import random
 #pip install flask
@@ -53,5 +53,17 @@ def Quotedata():
     return izbran
 
 
+@app.route("/randomNum")
+def randomNum():
+        return render_template("randomNum.html")
+
+
+
+@app.route("/Numdata")
+def Numdata():
+    min=1
+    max=30
+    number = random.randint(min,max)
+    return ((f"Number {naključno_število} Min {min} Max {max}"))
 
 app.run(debug = True)
