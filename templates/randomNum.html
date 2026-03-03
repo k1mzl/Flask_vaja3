@@ -10,6 +10,8 @@
 <body>
     <h1>Prikaz random številke</h1>
     <div id="Number">Klikni gumb za številko</div>
+    <input type="številka" name="min" id="vnos">
+    <input type="številka2" name="max" id="vnos">
     <button onclick="btnClick()" type="button">Pritisni</button>
 </body>
 
@@ -17,20 +19,27 @@
 
 <script>
     function btnClick() {
+        var vnosInp=document.getElementById("vnos").value
+        var vnosInp=document.getElementById("vnos").value
+        var divNumber = document.getElementById("number")
        
+
+        console.log(vnosInp)
         $.ajax({
+            url: "/Numdata",
             data: {
-                zipcode: 97201
+                zipcode: 97201,
+                vrednost: vnosInp
 
             },
             success: function (result) {
                 console.log(result)
-         
+                divNumber.innerHTML = result.number
             }
         });
 
 
-        //console.log("Halo")
+       
     }
 
 

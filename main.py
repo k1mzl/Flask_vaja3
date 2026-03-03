@@ -61,6 +61,7 @@ def randomNum():
 
 @app.route("/Numdata")
 def Numdata():
+
     min=1
     max=30
     number = random.randint(min,max)
